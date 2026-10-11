@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+  # This is needed for the github-actions[bot] to push to the gh-pages branch
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -15,7 +19,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
-          # If you want to keep the commit history, set to true
           keep_files: false
           # Optionally, you can set the destination branch
-          # destination_branch: gh-pages
+          publish_branch: gh-pages
